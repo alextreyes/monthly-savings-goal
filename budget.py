@@ -39,6 +39,30 @@ def calculate_months_to_reach_goal(
 
     return [months_with_rule, months_without_rule]
 
+
+def calculate_remaining_balance_50_30_20(
+    income: float,
+    needs_expenses: float,
+    wants_expenses: float,
+    period: int
+) -> float:
+    """
+    Calculate the money remaining after actual expenses
+    and the 20% savings allocation over a selected period.
+    """
+
+    # Under the 50/30/20 rules, 20% of income is set aside for savings
+    monthly_savings = income * 0.2
+
+    # Calculate the money remaining after expenses and savings
+    monthly_remaining = income - needs_expenses - wants_expenses - monthly_savings
+
+    # Calculate the remaining balance over the selected period
+    period_balance = monthly_remaining * period
+
+    return period_balance
+
+
 def main():
 
     print("BUDGET AND SAVINGS CALCULATOR")
