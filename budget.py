@@ -1,7 +1,4 @@
 
-
-
-
 def calculate_months_to_reach_goal(
     goal_amount: float,
     monthly_savings_50_30_20: float,
@@ -85,6 +82,50 @@ def calculate_monthly_savings_without_rule(
     return monthly_savings
 
 
+def calculate_monthly_savings_50_30_20(income: float) -> list[float]:
+    """
+    Calculate the recommended monthly budget following the 50/30/20 rule.
+
+    The 50/30/20 rule divides monthly income into three categories:
+    - 50% for needs (rent, etc.).
+    - 30% for wants (hobbies, entertainment, shopping, etc.).
+    - 20% for savings and financial goals.
+
+    Args:
+        income: The total monthly income.
+
+    Returns:
+        A list containing:
+        [needs_budget, wants_budget, savings_budget]
+
+    Raises:
+        ValueError: If the monthly income is less than or equal to zero.
+    """
+
+    # Check that the monthly income is valid
+    if income <= 0:
+        raise ValueError("Monthly income must be greater than zero.")
+
+    # Calculate 50% of income for essential expenses
+    needs_budget = income * 0.50
+
+    # Calculate 30% of income for personal expenses
+    wants_budget = income * 0.30
+
+    # Calculate 20% of income for monthly savings
+    savings_budget = income * 0.20
+
+    # Store all budget allocations in a list
+    recommended_budget = [
+        needs_budget,
+        wants_budget,
+        savings_budget
+    ]
+
+    # Return the recommended monthly budget
+    return recommended_budget
+
+
 def main():
 
     print("BUDGET AND SAVINGS CALCULATOR")
@@ -133,49 +174,4 @@ def main():
 
 
 if __name__ == "__main__":
-    print(calculate_months_to_reach_goal(500,100,200))
-    #main()
-
-
-def calculate_monthly_savings_50_30_20(income: float) -> list[float]:
-    """
-    Calculate the recommended monthly budget following the 50/30/20 rule.
-
-    The 50/30/20 rule divides monthly income into three categories:
-    - 50% for needs (rent, etc.).
-    - 30% for wants (hobbies, entertainment, shopping, etc.).
-    - 20% for savings and financial goals.
-
-    Args:
-        income: The total monthly income.
-
-    Returns:
-        A list containing:
-        [needs_budget, wants_budget, savings_budget]
-
-    Raises:
-        ValueError: If the monthly income is less than or equal to zero.
-    """
-
-    # Check that the monthly income is valid
-    if income <= 0:
-        raise ValueError("Monthly income must be greater than zero.")
-
-    # Calculate 50% of income for essential expenses
-    needs_budget = income * 0.50
-
-    # Calculate 30% of income for personal expenses
-    wants_budget = income * 0.30
-
-    # Calculate 20% of income for monthly savings
-    savings_budget = income * 0.20
-
-    # Store all budget allocations in a list
-    recommended_budget = [
-        needs_budget,
-        wants_budget,
-        savings_budget
-    ]
-
-    # Return the recommended monthly budget
-    return recommended_budget
+    main()
