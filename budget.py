@@ -63,6 +63,28 @@ def calculate_remaining_balance_50_30_20(
     return period_balance
 
 
+def calculate_monthly_savings_without_rule(
+    income: float,
+    needs_expenses: float,
+    wants_expenses: float,
+) -> float:
+    """
+    Calculate the total amount saved each month without using the 50/30/20 rule.
+
+    Savings are whatever remains after paying needs and wants.
+    """
+    # Start with the total monthly income available for the budget.
+    monthly_savings = income
+
+    # Subtract essential expenses such as rent, bills, and groceries.
+    monthly_savings -= needs_expenses
+
+    # Subtract discretionary expenses such as hobbies and entertainment.
+    monthly_savings -= wants_expenses
+
+    return monthly_savings
+
+
 def main():
 
     print("BUDGET AND SAVINGS CALCULATOR")
